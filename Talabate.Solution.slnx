@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Talabate.APIs/Talabate.APIs.csproj" />
+  <Project Path="Talabate.Core/Talabate.Core.csproj" />
+  <Project Path="Talabate.Repository/Talabate.Infrastructer.csproj" />
+  <Project Path="Talabate.Service/Talabate.Application.csproj" />
+</Solution>
