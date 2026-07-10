@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
+using Talabate.APIs.Helper;
 using Talabate.Core.IRepos;
 using Talabate.Repository;
 using Talabate.Repository.Data;
@@ -25,6 +26,8 @@ namespace Talabate.APIs
                 options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Talabate.Infrastructer"));
             });
             builder.Services.AddScoped(typeof(IGenaricRepo<>), typeof(GenaricRepo<>));
+
+            builder.Services.AddAutoMapper(typeof(MappingProfiles));
             #endregion
 
 
