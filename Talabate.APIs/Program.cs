@@ -1,7 +1,11 @@
 
+using Azure;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
+using Talabate.APIs.Error;
 using Talabate.APIs.Helper;
+using Talabate.APIs.Middleware;
 using Talabate.Core.IRepos;
 using Talabate.Repository;
 using Talabate.Repository.Data;
@@ -28,6 +32,26 @@ namespace Talabate.APIs
             builder.Services.AddScoped(typeof(IGenaricRepo<>), typeof(GenaricRepo<>));
 
             builder.Services.AddAutoMapper(typeof(MappingProfiles));
+
+            builder.Services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = (actionContext) =>
+                {
+                    var errors = actionContext.ModelState.Where(p => p.Value.Errors.Count() > 0)
+                                                       .SelectMany(p => p.Value.Errors)
+                                                       .Select(e => e.ErrorMessage)
+                                                       .ToList();
+
+                    var response = new ApiValidationErrorResponse()
+                    {
+                        Errors = errors
+                    };
+
+                return new BadRequestObjectResult(response);
+
+                };
+
+            });
             #endregion
 
 
@@ -52,17 +76,19 @@ namespace Talabate.APIs
                 
             }
 
+            app.UseMiddleware<ExcaptionHandelarMiddleware>();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
+                app.UseStatusCodePagesWithReExecute("/errors/{0}"); 
                 app.UseSwagger();
                 app.UseSwaggerUI();
                 app.MapOpenApi();
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
-            app.UseAuthorization();
 
 
             app.MapControllers();

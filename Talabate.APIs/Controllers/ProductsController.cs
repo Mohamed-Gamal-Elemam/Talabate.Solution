@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Talabate.APIs.Dtos;
+using Talabate.APIs.Error;
 using Talabate.Core.Entity;
 using Talabate.Core.IRepos;
 using Talabate.Core.Specifications;
@@ -37,7 +38,7 @@ namespace Talabate.APIs.Controllers
             var product = await _productRepo.GetAWithSpecsync(spec);
             if (product is null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse(404));
             }
             return Ok(_Mapper.Map<Product, ProductToReturnDto>(product));
         }
