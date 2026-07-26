@@ -18,6 +18,23 @@ namespace Talabate.Infrastructer
                 query=InputQuery.Where(spec.Criteria); //_dbcontext.set<TEntithy>().where(p=>p.id==1);
             }
 
+            if (spec.orderBy is not null)
+            {
+                query= query.OrderBy(spec.orderBy);
+            }
+            else if(spec.orderByDesc is not null)
+            {
+                query=query.OrderByDescending(spec.orderByDesc);
+            }
+
+
+            if (spec.IsPaginationEnable)
+            {
+                query = query.Skip(spec.Skip).Take(spec.Take);
+            }
+
+
+
 
             query = spec.Includes.Aggregate(query, (CurrentQuery, IncludExprestion) => CurrentQuery.Include(IncludExprestion));
 

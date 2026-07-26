@@ -6,11 +6,11 @@ namespace Talabate.APIs.Middleware
     public class ExcaptionHandelarMiddleware
     {
         public RequestDelegate _Next { get; }
-        public Logger<ExcaptionHandelarMiddleware> _Logger { get; }
+        public ILogger<ExcaptionHandelarMiddleware> _Logger { get; }
         public IWebHostEnvironment _Env { get; }
 
 
-        public ExcaptionHandelarMiddleware(RequestDelegate next ,Logger<ExcaptionHandelarMiddleware> logger ,IWebHostEnvironment env)
+        public ExcaptionHandelarMiddleware(RequestDelegate next ,ILogger<ExcaptionHandelarMiddleware> logger ,IWebHostEnvironment env)
         {
             _Next = next;
             _Logger = logger;
