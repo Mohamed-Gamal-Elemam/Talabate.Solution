@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Talabate.Core.Entity;
+using Talabate.Core.Entity.Product;
 
-namespace Talabate.Repository.Data.Configration
+namespace Talabate.Infrastructer.Genaric_Repoistory.Data.Configration
 {
     internal class ProductConfigration : IEntityTypeConfiguration<Product>
     {

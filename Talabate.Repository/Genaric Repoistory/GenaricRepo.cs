@@ -1,14 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Talabate.Core.Entity;
 using Talabate.Core.IRepos;
 using Talabate.Core.Specifications;
-using Talabate.Infrastructer;
-using Talabate.Repository.Data;
+using Talabate.Repository.Genaric_Repoistory.Data;
 
-namespace Talabate.Repository
+namespace Talabate.Infrastructer.Genaric_Repoistory
 {
     public class GenaricRepo<T> : IGenaricRepo<T> where T : BaseEntity
     {

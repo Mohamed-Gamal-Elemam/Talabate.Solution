@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Talabate.APIs.Dtos;
 using Talabate.APIs.Error;
 using Talabate.APIs.Helper;
-using Talabate.Core.Entity;
+using Talabate.Core.Entity.Product;
 using Talabate.Core.IRepos;
 using Talabate.Core.Specifications;
 using Talabate.Core.Specifications.ProductSpecs;

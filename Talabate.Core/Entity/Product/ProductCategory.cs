@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Talabate.Core.Entity
+namespace Talabate.Core.Entity.Product
 {
     public class ProductCategory : BaseEntity
     {

@@ -1,4 +1,4 @@
-﻿using Talabate.Core.Entity;
+﻿using Talabate.Core.Entity.Product;
 
 namespace Talabate.Core.Specifications.ProductSpecs
 {

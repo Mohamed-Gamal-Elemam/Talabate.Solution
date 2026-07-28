@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
-using Talabate.Core.Entity;
+using Talabate.Core.Entity.Product;
 
-namespace Talabate.Repository.Data
+namespace Talabate.Repository.Genaric_Repoistory.Data
 {
     public static class StoreContextSeed
     {

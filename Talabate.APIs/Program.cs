@@ -1,14 +1,13 @@
-
-using Azure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
+using StackExchange.Redis;
 using Talabate.APIs.Error;
 using Talabate.APIs.Helper;
 using Talabate.APIs.Middleware;
 using Talabate.Core.IRepos;
-using Talabate.Repository;
-using Talabate.Repository.Data;
+using Talabate.Infrastructer.BasketRepo;
+using Talabate.Infrastructer.Genaric_Repoistory;
+using Talabate.Repository.Genaric_Repoistory.Data;
 
 namespace Talabate.APIs
 {
@@ -25,13 +24,20 @@ namespace Talabate.APIs
             builder.Services.AddOpenApi();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped(typeof(IBasketRepo),typeof(BasketRepo) );
+
+            builder.Services.AddScoped<IConnectionMultiplexer>((servicesProvider) =>
+            {
+                var connection = builder.Configuration.GetConnectionString("Redis");
+                return ConnectionMultiplexer.Connect(connection);
+            });
             builder.Services.AddDbContext<StoreContext>(options =>
             {
                 options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Talabate.Infrastructer"));
             });
             builder.Services.AddScoped(typeof(IGenaricRepo<>), typeof(GenaricRepo<>));
 
-            builder.Services.AddAutoMapper(typeof(MappingProfiles));
+            builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfiles));
 
             builder.Services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -52,6 +58,9 @@ namespace Talabate.APIs
                 };
 
             });
+
+
+
             #endregion
 
 

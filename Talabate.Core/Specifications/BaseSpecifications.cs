@@ -12,8 +12,8 @@ namespace Talabate.Core.Specifications
         public List<Expression<Func<T, object>>> Includes { get; set; } = new List<Expression<Func<T, object>>>();
         public Expression<Func<T, object>> orderBy { get ; set ; } = null;
         public Expression<Func<T, object>> orderByDesc { get ; set ; } = null;
-        public int Skip { get ; set  ; }
-        public int Take { get ; set ; }
+        public int Skip { get; set; } = 0;
+        public int Take { get; set; } = 0;
         public bool IsPaginationEnable { get ; set ; }
 
         public BaseSpecifications()

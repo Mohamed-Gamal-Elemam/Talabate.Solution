@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Talabate.Repository.Data;
+using Talabate.Repository.Genaric_Repoistory.Data;
 
 #nullable disable
 
-namespace Talabate.Infrastructer.Data.Migrations
+namespace Talabate.Infrastructer.GenaricRepoistory.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
     partial class StoreContextModelSnapshot : ModelSnapshot
@@ -24,7 +24,7 @@ namespace Talabate.Infrastructer.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Talabate.Core.Entity.Product", b =>
+            modelBuilder.Entity("Talabate.Core.Entity.Product.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,7 +65,7 @@ namespace Talabate.Infrastructer.Data.Migrations
                     b.ToTable("products");
                 });
 
-            modelBuilder.Entity("Talabate.Core.Entity.ProductBrand", b =>
+            modelBuilder.Entity("Talabate.Core.Entity.Product.ProductBrand", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -83,7 +83,7 @@ namespace Talabate.Infrastructer.Data.Migrations
                     b.ToTable("productBrands");
                 });
 
-            modelBuilder.Entity("Talabate.Core.Entity.ProductCategory", b =>
+            modelBuilder.Entity("Talabate.Core.Entity.Product.ProductCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -101,15 +101,15 @@ namespace Talabate.Infrastructer.Data.Migrations
                     b.ToTable("productCategories");
                 });
 
-            modelBuilder.Entity("Talabate.Core.Entity.Product", b =>
+            modelBuilder.Entity("Talabate.Core.Entity.Product.Product", b =>
                 {
-                    b.HasOne("Talabate.Core.Entity.ProductBrand", "Brand")
+                    b.HasOne("Talabate.Core.Entity.Product.ProductBrand", "Brand")
                         .WithMany()
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Talabate.Core.Entity.ProductCategory", "Category")
+                    b.HasOne("Talabate.Core.Entity.Product.ProductCategory", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)

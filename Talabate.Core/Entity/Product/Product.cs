@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Talabate.Core.Entity
+namespace Talabate.Core.Entity.Product
 {
     public class Product : BaseEntity
     {

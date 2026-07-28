@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\..\..\..\Downloads\Back end\API(AhmedNaser)\Session1\Data Seeding JSON Files\Data Seeding JSON Files\brands.json" Link="Data\SeedData\brands.json" />
-    <Content Include="..\..\..\..\Downloads\Back end\API(AhmedNaser)\Session1\Data Seeding JSON Files\Data Seeding JSON Files\categories.json" Link="Data\SeedData\categories.json" />
-    <Content Include="..\..\..\..\Downloads\Back end\API(AhmedNaser)\Session1\Data Seeding JSON Files\Data Seeding JSON Files\products.json" Link="Data\SeedData\products.json" />
+    <Content Include="..\..\..\..\Downloads\Back end\API(AhmedNaser)\Session1\Data Seeding JSON Files\Data Seeding JSON Files\brands.json" Link="Genaric Repoistory\Data\SeedData\brands.json" />
+    <Content Include="..\..\..\..\Downloads\Back end\API(AhmedNaser)\Session1\Data Seeding JSON Files\Data Seeding JSON Files\categories.json" Link="Genaric Repoistory\Data\SeedData\categories.json" />
+    <Content Include="..\..\..\..\Downloads\Back end\API(AhmedNaser)\Session1\Data Seeding JSON Files\Data Seeding JSON Files\products.json" Link="Genaric Repoistory\Data\SeedData\products.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,10 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Talabate.Core\Talabate.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\SeedData\" />
   </ItemGroup>
 
 </Project>

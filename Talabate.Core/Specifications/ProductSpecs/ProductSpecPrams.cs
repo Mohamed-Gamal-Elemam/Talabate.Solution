@@ -13,12 +13,12 @@ namespace Talabate.Core.Specifications.ProductSpecs
         public int? CategoryId { get; set; }
         public int PageSize { get => pageSize; set => pageSize =value > 10 ? pageSize =10 : value; }
         public int PageIndex { get; set; } = 1;
-        private string search;
+        private string? search;
 
-        public string Search
+        public string? Search
         {
             get { return search; }
-            set { search = value.ToLower() ; }
+            set { search = value?.ToLower() ; }
         }
 
 

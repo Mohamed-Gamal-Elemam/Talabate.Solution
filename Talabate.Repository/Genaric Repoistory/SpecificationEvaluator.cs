@@ -5,7 +5,7 @@ using System.Text;
 using Talabate.Core.Entity;
 using Talabate.Core.Specifications;
 
-namespace Talabate.Infrastructer
+namespace Talabate.Infrastructer.Genaric_Repoistory
 {
     internal static class SpecificationEvaluator<TEntithy> where TEntithy : BaseEntity
     {
