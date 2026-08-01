@@ -4,9 +4,13 @@ using StackExchange.Redis;
 using Talabate.APIs.Error;
 using Talabate.APIs.Helper;
 using Talabate.APIs.Middleware;
+using Talabate.Application.Services;
 using Talabate.Core.IRepos;
+using Talabate.Core.IServices;
+using Talabate.Core.IUnitOfWork;
 using Talabate.Infrastructer.BasketRepo;
 using Talabate.Infrastructer.Genaric_Repoistory;
+using Talabate.Infrastructer.UnitOfWork;
 using Talabate.Repository.Genaric_Repoistory.Data;
 
 namespace Talabate.APIs
@@ -25,6 +29,8 @@ namespace Talabate.APIs
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped(typeof(IBasketRepo),typeof(BasketRepo) );
+            builder.Services.AddScoped(typeof(IUnitOfWork),typeof(UnitOfWork));
+            builder.Services.AddScoped(typeof(IOrderService),typeof(OrderService));
 
             builder.Services.AddScoped<IConnectionMultiplexer>((servicesProvider) =>
             {

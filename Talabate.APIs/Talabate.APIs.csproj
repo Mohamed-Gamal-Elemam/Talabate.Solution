@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Talabate.Repository\Talabate.Infrastructer.csproj" />
+    <ProjectReference Include="..\Talabate.Service\Talabate.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

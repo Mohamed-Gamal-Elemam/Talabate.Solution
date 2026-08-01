@@ -52,6 +52,13 @@ namespace Talabate.Infrastructer.Genaric_Repoistory
             return SpecificationEvaluator<T>.GetQuery(_dbcontext.Set<T>().AsQueryable(), spec);
         }
 
-        
+        public async Task AddAsync(T entity)
+        => await _dbcontext.Set<T>().AddAsync(entity);
+
+        public async void UpdateAsync(T entity)
+        =>  _dbcontext.Set<T>().Update(entity);
+
+        public async void DeleteAsync(T entity)
+        => _dbcontext.Remove(entity);
     }
 }

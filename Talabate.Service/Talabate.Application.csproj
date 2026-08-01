@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Talabate.Core\Talabate.Core.csproj" />
+  </ItemGroup>
+
 </Project>

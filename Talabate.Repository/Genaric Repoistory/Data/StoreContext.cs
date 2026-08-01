@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using Talabate.Core.Entity.Order_Agregate;
 using Talabate.Core.Entity.Product;
 
 namespace Talabate.Repository.Genaric_Repoistory.Data
@@ -16,6 +17,9 @@ namespace Talabate.Repository.Genaric_Repoistory.Data
         public DbSet<Product> products  { get; set; }
         public DbSet<ProductBrand> productBrands { get; set; }
         public DbSet<ProductCategory> productCategories { get; set; }
+        public DbSet<Order> orders { get; set; }
+        public DbSet<OrderItem> orderItems  { get; set; }
+        public DbSet<DeliveryMethod> deliveryMethods { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
