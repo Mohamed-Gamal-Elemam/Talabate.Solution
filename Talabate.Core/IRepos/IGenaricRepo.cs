@@ -8,7 +8,7 @@ namespace Talabate.Core.IRepos
     {
         Task<T?> GetAsync(int id);
         Task<IReadOnlyList<T>> GetAllAsync();
-        Task<T?> GetAWithSpecsync(ISpecification<T> spec);
+        Task<T?> GetWithSpecsync(ISpecification<T> spec);
         Task<IReadOnlyList<T>> GetAllWithSpecAsync(ISpecification<T> spec);
         Task<int> CountAsync(ISpecification<T> spec);
         Task AddAsync (T entity);

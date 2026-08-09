@@ -20,4 +20,10 @@
     <ProjectReference Include="..\Talabate.Core\Talabate.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Identity\Configrations\" />
+    <Folder Include="Identity\DataSeed\" />
+    <Folder Include="Identity\Migrations\" />
+  </ItemGroup>
+
 </Project>

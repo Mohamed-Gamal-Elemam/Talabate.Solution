@@ -27,7 +27,7 @@ namespace Talabate.Core.Entity.Order_Agregate
 
         [ForeignKey("DeliveryMethodId")]
         public virtual DeliveryMethod deliveryMethod { get; set; }
-        ICollection<OrderItem> Items { get; set; } = new HashSet<OrderItem>();
+        public ICollection<OrderItem> Items { get; set; } = new HashSet<OrderItem>();
         
         public decimal SubTotal { get; set; }
         public decimal GetTotal()

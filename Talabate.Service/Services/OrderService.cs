@@ -6,6 +6,7 @@ using Talabate.Core.Entity.Product;
 using Talabate.Core.IRepos;
 using Talabate.Core.IServices;
 using Talabate.Core.IUnitOfWork;
+using Talabate.Core.Specifications;
 
 namespace Talabate.Application.Services
 {
@@ -35,9 +36,10 @@ namespace Talabate.Application.Services
             //get orderitem
             if (basket?.Items?.Count()>0)
             {
+                var ProductRepo = _unitOfWork.Reposatory<Product>();
                 foreach (var item in basket.Items)
                 {
-                    var Product = await _unitOfWork.Reposatory<Product>().GetAsync(item.Id);
+                    var Product = await ProductRepo.GetAsync(item.Id);
                     var ProductItemOrder= new ProductItemOrder(item.Id,Product.Name,item.PictureUrl);
                     var orderItem = new OrderItem(ProductItemOrder, item.Quantity, Product.Price);
                     OrderItems.Add(orderItem);
@@ -70,14 +72,25 @@ namespace Talabate.Application.Services
 
         }
 
-        public Task<Order> GetOrderByIdForUserAsync(int OrderId, string BuyerEmail)
+
+
+        public Task<IReadOnlyList<Order?>> GetOrdersForUserAsync(string BuyerEmail)
         {
-            throw new NotImplementedException();
+            var OrderRepo= _unitOfWork.Reposatory<Order>();
+            var spec = new OrderSpacifications(BuyerEmail);
+            var Orders = OrderRepo.GetAllWithSpecAsync(spec);
+
+            return Orders;
+        }
+        public Task<Order?> GetOrderByIdForUserAsync(int OrderId, string BuyerEmail)
+        {
+            var orderRepo=_unitOfWork.Reposatory<Order>();
+            var orderSpec = new OrderSpacifications(OrderId, BuyerEmail);
+            var order =orderRepo.GetWithSpecsync(orderSpec);
+            return order;
         }
 
-        public Task<IReadOnlyList<Order>> GetOrdersForUserAsync(string BuyerEmail)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethods()
+        => await _unitOfWork.Reposatory<DeliveryMethod>().GetAllAsync();
     }
 }

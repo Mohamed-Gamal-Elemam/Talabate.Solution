@@ -17,10 +17,7 @@ namespace Talabate.Infrastructer.GenaricRepoistory.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.9")
-                .HasAnnotation("Proxies:ChangeTracking", false)
-                .HasAnnotation("Proxies:CheckEquality", false)
-                .HasAnnotation("Proxies:LazyLoading", true)
+                .HasAnnotation("ProductVersion", "10.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -97,6 +94,9 @@ namespace Talabate.Infrastructer.GenaricRepoistory.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -104,6 +104,8 @@ namespace Talabate.Infrastructer.GenaricRepoistory.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("orderItems");
                 });
@@ -233,6 +235,10 @@ namespace Talabate.Infrastructer.GenaricRepoistory.Data.Migrations
 
             modelBuilder.Entity("Talabate.Core.Entity.Order_Agregate.OrderItem", b =>
                 {
+                    b.HasOne("Talabate.Core.Entity.Order_Agregate.Order", null)
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId");
+
                     b.OwnsOne("Talabate.Core.Entity.Order_Agregate.ProductItemOrder", "Product", b1 =>
                         {
                             b1.Property<int>("OrderItemId")
@@ -278,6 +284,11 @@ namespace Talabate.Infrastructer.GenaricRepoistory.Data.Migrations
                     b.Navigation("Brand");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Talabate.Core.Entity.Order_Agregate.Order", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

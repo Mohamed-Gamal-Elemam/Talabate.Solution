@@ -37,7 +37,7 @@ namespace Talabate.Infrastructer.Genaric_Repoistory
             return await ApplySpecification(spec).ToListAsync();
         }
 
-        public async Task<T?> GetAWithSpecsync(ISpecification<T> spec)
+        public async Task<T?> GetWithSpecsync(ISpecification<T> spec)
         {
             return await ApplySpecification(spec).FirstOrDefaultAsync();
         }
