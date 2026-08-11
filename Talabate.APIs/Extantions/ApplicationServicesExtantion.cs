@@ -21,6 +21,7 @@ namespace Talabate.APIs.Extantions
             services.AddScoped(typeof(IAuthServices), typeof(AuthServices));
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IProductServices, ProductServices>();
+            services.AddSingleton(typeof(IResponseCachServices),typeof(ResponseCachServices));
 
             services.AddAutoMapper(cfg => { }, typeof(MappingProfiles));
 

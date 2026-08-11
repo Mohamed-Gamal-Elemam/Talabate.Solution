@@ -24,7 +24,7 @@ namespace Talabate.APIs.Controllers
             _Mapper = mapper;
            _productServices = productServices;
         }
-
+        [CachedAttribute(600)]
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetAllAsync([FromQuery] ProductSpecPrams specPrams)
         {
@@ -35,7 +35,7 @@ namespace Talabate.APIs.Controllers
             return Ok(new Pagination<ProductToReturnDto>(specPrams.PageIndex, specPrams.PageSize,count, data));
         }
         [HttpGet("{id}")]
-
+        [CachedAttribute(600)]
         public async Task<ActionResult<ProductToReturnDto>> GetAsync (int id)
         {
             
@@ -47,13 +47,14 @@ namespace Talabate.APIs.Controllers
             }
             return Ok(_Mapper.Map<Product, ProductToReturnDto>(product));
         }
-
+        [CachedAttribute(600)]
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetBrands()
         {
             var Brands = await _productServices.GetProductBrandsAsync();
             return Ok(Brands);
         }
+        [CachedAttribute(600)]
         [HttpGet("categories")]
         public async Task<ActionResult<IReadOnlyList<ProductCategory>>> Getcategories() 
         {

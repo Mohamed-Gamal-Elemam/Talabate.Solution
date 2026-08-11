@@ -33,7 +33,7 @@ namespace Talabate.APIs.Extantions
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<AppIdentityDbContext>();
 
-            services.AddScoped<IConnectionMultiplexer>(sp =>
+            services.AddSingleton<IConnectionMultiplexer>(sp =>
             {
                 var connection =
                     configuration.GetConnectionString("Redis");
