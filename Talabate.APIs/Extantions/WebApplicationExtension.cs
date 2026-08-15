@@ -23,7 +23,6 @@ namespace Talabate.APIs.Extantions
             {
                 await context.Database.MigrateAsync();
                 await StoreContextSeed.SeedAsync(context);
-
                 await identityContext.Database.MigrateAsync();
                 await AppIdentityDataSeeding.SeedData(userManager);
             }
